@@ -3,95 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veszprém Weboldal</title>
+    <title>Veszprém | A Rózsaváros Varázsa</title>
+    
+    <!-- Google Fonts integráció -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* Alapos stílusok */
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
+        /* --- VARIÁBLÁK ÉS ALAPOS STÍLUSOK --- */
+        :root {
+            --primary-burgundy: #6b0d1e; /* Mélyebb, luxusabb rózsa */
+            --gold-accent: #c5a059;      /* Matt arany */
+            --dark-slate: #1a1f24;
+            --soft-white: #fcfaf7;
+            --text-gray: #4a4a4a;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* Navigációs sáv stílusa */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--soft-white);
+            color: var(--text-gray);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-burgundy);
+        }
+
+        /* --- NAVIGÁCIÓS SÁV (Glassmorphism) --- */
         .navbar {
             display: flex;
-            justify-content: space-between; /* Elosztja a három részt (bal, közep, jobb) */
-            align-items: center;           /* Középre igazítja függőleg */
-            background-color: #2c3e50;     /* Sötétkék/szürke háttér */
-            padding: 10px 5%;              /* Oldalsó részeknél kis távolság */
-            height: 70px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            height: 90px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 31, 36, 0.8); /* Átlátszó sötét */
+            backdrop-filter: blur(15px); /* Üveg effekt */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
         }
 
-        /* A bal és jobb oldali gombok tartóhelye */
         .nav-group {
             display: flex;
-            gap: 15px;                     /* Távolság a gombok között */
-            flex: 1;                       /* Ez biztosítja, hogy a bal és jobb rész egyenlő helyet foglaljon */
+            gap: 20px;
+            flex: 1;
         }
 
-        /* A jobb oldali csoportot jobbra igazítjuk */
         .nav-group.right {
             justify-content: flex-end;
         }
 
-        /* A központi felirat stílusa */
         .nav-center {
             font-size: 1.8rem;
-            font-weight: bold;
-            color: #ecf0f1;
+            font-weight: 900;
+            color: white;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            flex: 2;                       /* Több helyet ad a középre */
+            letter-spacing: 4px;
+            flex: 2;
             text-align: center;
+            border: 1px solid var(--gold-accent);
+            padding: 5px 30px;
+            border-radius: 100px;
         }
 
-        /* Gombok stílusa */
         .nav-btn {
             text-decoration: none;
             color: white;
-            padding: 8px 16px;
-            border: 1px solid #ecf0f1;
-            border-radius: 5px;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 10px 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            transition: var(--transition);
         }
 
-        /* Gombok hover (egérrel rámutatás) hatása */
         .nav-btn:hover {
-            background-color: white;
-            color: #2c3e50;
+            background: var(--gold-accent);
+            border-color: var(--gold-accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
         }
 
-        /* Tartalom csak mutatásra */
-        .content {
-            padding: 50px;
+        /* --- HERO SZEKCIÓ --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1590052334634-87c6e01d2a8b?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: white;
+            margin-bottom: 20px;
+            animation: fadeInUp 1.2s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease 0.4s forwards;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            background: var(--gold-accent);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: var(--transition);
+            opacity: 0;
+            animation: fadeInUp 1.2s ease 0.8s forwards;
+        }
+
+        .cta-button:hover {
+            background: #b38e4a;
+            transform: scale(1.05);
+        }
+
+        /* --- LÁTNIVALÓK SZEKCIÓ --- */
+        section {
+            padding: 120px 10%;
+        }
+
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold-accent);
+            margin: 15px auto;
+        }
+
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .card-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* --- TÖRTÉNET SZEKCIÓ --- */
+        .history-section {
+            background-color: #f0ede9;
+            border-radius: 100px 100px 0 0;
+            padding: 120px 15%;
+        }
+
+        .history-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark-slate);
+            color: #999;
+            padding: 60px 10% 30px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        /* --- ANIMÁCIÓK --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVITÁS */
+        @media (max-width: 992px) {
+            .navbar { padding: 15px 5%; }
+            section { padding: 80px 5%; }
+            .nav-center { font-size: 1.4rem; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; height: auto; padding: 20px; }
+            .nav-group { margin: 10px 0; }
+            .hero h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <!-- Bal oldali gombok -->
         <div class="nav-group">
-            <a href="#" class="nav-btn">Hírek</a>
-            <a href="#" class="nav-btn">Galéria</a>
+            <a href="#latnivalok" class="nav-btn">Látnivalók</a>
+            <a href="#tortenet" class="nav-btn">Történet</a>
         </div>
 
-        <!-- Középső felirat -->
-        <div class="nav-center">Veszprém</div>
+        <div class="nav-center">VESZPRÉM</div>
 
-        <!-- Jobb oldali gombok -->
         <div class="nav-group right">
-            <a href="#" class="nav-btn">Kapcsolat</a>
-            <a href="#" class="nav-btn">Térkép</a>
+            <a href="#" class="nav-btn">Galéria</a>
+            <a href="#kapcsolat" class="nav-btn">Kapcsolat</a>
         </div>
     </nav>
 
-    <div class="content">
-        <h1>Üdvözöljük a Veszprém hivatalos oldalán!</h1>
-        <p>Ez egy példa navigációs sávra, ahol a gombok szépen elrendezve vannak.</p>
-    </div>
+    <header class="hero">
+        <h1>A Rózsaváros</h1>
+        <p>Fedezd fel Veszprém örökt tartó történetét, ahol a középkori kastélyok és a rózsák illata találkozik a modern kultúrával.</p>
+        <a href="#latnivalok" class="cta-button">Fedezd fel a várost</a>
+    </header>
+
+    <section id="latnivalok">
+        <h2>Főbb Látnivalók</h2>
+        <div class="attractions-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1590052334634-87c6e01d2a8b?auto=format&fit=crop&w=800&q=80" alt="Veszprémi Vár">
+                <div class="card-content">
+                    <h3>A Veszprémi Vár</h3>
+                    <p>A város szívében fekvő vársziget egy középkori kastélykomplexst őriz meg. Meglátogasd a múzeumokat és élvezd a panorámát.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1548625366-80097b2f0d8c?auto=format&fit=crop&w=800&q=80" alt="Székesegyház">
+                <div class="card-content">
+                    <h3>Székesegyház</h3>
+                    <p>A város vallási és építészetileg is legfontosabb jelképe. A góticzi stílusú templom impozáns tornya mindenről látható.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1589647460264-84d4c14f7ecb?auto=format&fit=crop&w=800&q=80" alt="Rózskert">
+                <div class="card-content">
+                    <h3>A Rózskert</h3>
+                    <p>Veszprém nem véletlenül a Rózsaváros. A kertben több száz fajta rózsát találhatsz, ahol a nyugalom és a természet királykodik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tortenet" class="history-section">
+        <div class="history-content">
+            <h2>A Város Története</h2>
+            <p>Veszprém, Magyarország egyik legrózsasabb és legszebb történelmi városa. Már a középkorban fontos stratégiai pont volt, és hosszú évszázadokig szolgálta őröző szerepét a királyság határaikon.</p>
+            <br>
+            <p>A város különleges hangulata a szűk, kőzetes utcáiból, a középkori épületekből és a borkultúrájából fakad. Veszprém nemcsak egy város, hanem egy életérzés: művészet, történelem és természet harmonikus ötvözete.</p>
+        </div>
+    </section>
+
+    <footer id="kapcsolat">
+        <div class="footer-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Térkép</a>
+        </div>
+        <p>&copy; 2026 Veszprém Oldala - Minden jog fenntartva.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">Kapcsolat: info@veszprem-oldala.hu | +36 123 456 789</p>
+    </footer>
 
 </body>
 </html>
