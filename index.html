@@ -11,11 +11,11 @@
     <style>
         /* --- VARIÁBLÁK ÉS ALAPOS STÍLUSOK --- */
         :root {
-            --primary-burgundy: #6b0d1e; /* Mélyebb, luxusabb rózsa */
+            --primary-burgundy: #6b0d1e; /* Mélyvörös (rózsa) */
             --gold-accent: #c5a059;      /* Matt arany */
             --dark-slate: #1a1f24;
             --soft-white: #fcfaf7;
-            --text-gray: #4a4a4a;
+            --text-gray: #3e3e3e;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
@@ -53,8 +53,8 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(26, 31, 36, 0.8); /* Átlátszó sötét */
-            backdrop-filter: blur(15px); /* Üveg effekt */
+            background: rgba(26, 31, 36, 0.85);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 4px 30px rgba(0,0,0,0.1);
         }
@@ -119,21 +119,21 @@
 
         .hero h1 {
             font-size: clamp(3rem, 8vw, 6rem);
-            color: white;
             margin-bottom: 20px;
+            color: white;
             animation: fadeInUp 1.2s ease forwards;
         }
 
         .hero p {
             font-size: 1.2rem;
-            max-width: 700px;
-            margin-bottom: 30px;
+            max-width: 750px;
+            margin-bottom: 35px;
             opacity: 0;
             animation: fadeInUp 1.2s ease 0.4s forwards;
         }
 
         .cta-button {
-            padding: 15px 40px;
+            padding: 18px 45px;
             background: var(--gold-accent);
             color: white;
             text-decoration: none;
@@ -147,9 +147,10 @@
         .cta-button:hover {
             background: #b38e4a;
             transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        /* --- LÁTNIVALÓK SZEKCIÓ --- */
+        /* --- SZEKCIÓK ÁLLÍTÁSA --- */
         section {
             padding: 120px 10%;
         }
@@ -157,7 +158,7 @@
         h2 {
             font-size: 3rem;
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             position: relative;
         }
 
@@ -170,31 +171,41 @@
             margin: 15px auto;
         }
 
+        /* --- BEVEZETŐ SZÖVEG (Az első paragrafus) --- */
+        .intro-text {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            text-align: center;
+            color: var(--text-gray);
+        }
+
+        /* --- LÁTNIVALÓK GRID (A második paragrafus alapú) --- */
         .attractions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
         }
 
         .card {
             background: white;
-            border-radius: 20px;
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
             transition: var(--transition);
             border: 1px solid #eee;
         }
 
         .card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.1);
         }
 
         .card img {
             width: 100%;
             height: 250px;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.8s ease;
         }
 
         .card:hover img {
@@ -202,32 +213,35 @@
         }
 
         .card-content {
-            padding: 30px;
+            padding: 35px;
         }
 
         .card-content h3 {
             margin-bottom: 15px;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
 
-        /* --- TÖRTÉNET SZEKCIÓ --- */
-        .history-section {
-            background-color: #f0ede9;
-            border-radius: 100px 100px 0 0;
-            padding: 120px 15%;
+        /* --- KULTÚRA ÉS TERMÉSZET (A harmadik és negyedik paragrafus) --- */
+        .dual-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 60px;
+            align-items: center;
+            margin-top: 40px;
         }
 
-        .history-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
+        .content-block h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--gold-accent);
+            padding-left: 15px;
         }
 
         /* --- FOOTER --- */
         footer {
             background: var(--dark-slate);
-            color: #999;
-            padding: 60px 10% 30px;
+            color: #aaa;
+            padding: 80px 10% 40px;
             text-align: center;
         }
 
@@ -239,18 +253,18 @@
             color: white;
             margin: 0 15px;
             text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-accent);
         }
 
         /* --- ANIMÁCIÓK --- */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* RESPONSIVITÁS */
@@ -258,6 +272,7 @@
             .navbar { padding: 15px 5%; }
             section { padding: 80px 5%; }
             .nav-center { font-size: 1.4rem; }
+            .dual-content { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -272,7 +287,7 @@
     <nav class="navbar">
         <div class="nav-group">
             <a href="#latnivalok" class="nav-btn">Látnivalók</a>
-            <a href="#tortenet" class="nav-btn">Történet</a>
+            <a href="#kultura" class="nav-btn">Kultúra</a>
         </div>
 
         <div class="nav-center">VESZPRÉM</div>
@@ -284,13 +299,25 @@
     </nav>
 
     <header class="hero">
-        <h1>A Rózsaváros</h1>
-        <p>Fedezd fel Veszprém örökt tartó történetét, ahol a középkori kastélyok és a rózsák illata találkozik a modern kultúrával.</p>
+        <h1>Veszprém</h1>
+        <p>Fedezd fel a Rózsaváros varázsát, ahol a középkori történet találkozik a természet szépségével.</p>
         <a href="#latnivalok" class="cta-button">Fedezd fel a várost</a>
     </header>
 
+    <!-- 1. PARAGRAFFUS: BEVEZETÉS -->
+    <section id="bevezetes">
+        <h2>A Rózsaváros Szíve</h2>
+        <div class="intro-text">
+            <p>Veszprém Magyarország egyik legszebb és legrégebbi történelmi városa, amely a Bakony déli részén, a Balatontól nem messze található. A várost gyakran a „királynék városának” is nevezik, mivel évszázadokon keresztül szoros kapcsolatban állt a magyar királynékkal. Veszprém történelmi jelentőségét jól mutatja, hogy már a középkorban fontos egyházi és politikai központ volt.</p>
+        </div>
+    </section>
+
+    <!-- 2. PARAGRAFFUS: LÁTNIVALÓK (GRID SZERKEZETBEN) -->
     <section id="latnivalok">
         <h2>Főbb Látnivalók</h2>
+        <p style="text-align: center; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            A város egyik legfontosabb látnivalója a Veszprémi Vár, amely egy magaslaton helyezkedik el, és gyönyörű kilátást nyújt a környékre. A várnegyedben számos történelmi épület található, köztük a Szent Mihály-főszékesegyház, valamint a Tűztorony, amely Veszprém egyik jelképe.
+        </p>
         <div class="attractions-grid">
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1590052334634-87c6e01d2a8b?auto=format&fit=crop&w=800&q=80" alt="Veszprémi Vár">
@@ -303,27 +330,33 @@
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1548625366-80097b2f0d8c?auto=format&fit=crop&w=800&q=80" alt="Székesegyház">
                 <div class="card-content">
-                    <h3>Székesegyház</h3>
+                    <h3>Szent Mihály-főszékesegyház</h3>
                     <p>A város vallási és építészetileg is legfontosabb jelképe. A góticzi stílusú templom impozáns tornya mindenről látható.</p>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1589647460264-84d4c14f7ecb?auto=format&fit=crop&w=800&q=80" alt="Rózskert">
+                <img src="https://images.unsplash.com/photo-1589647460264-84d4c14f7ecb?auto=format&fit=crop&w=800&q=80" alt="Tűztorony">
                 <div class="card-content">
-                    <h3>A Rózskert</h3>
-                    <p>Veszprém nem véletlenül a Rózsaváros. A kertben több száz fajta rózsát találhatsz, ahol a nyugalom és a természet királykodik.</p>
+                    <h3>A Tűztorony</h3>
+                    <p>Veszprém egyik ikonikus jelképe. A vár környékén hangulatos utcák, terek és régi épületek várják a látogatókat.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="tortenet" class="history-section">
-        <div class="history-content">
-            <h2>A Város Története</h2>
-            <p>Veszprém, Magyarország egyik legrózsasabb és legszebb történelmi városa. Már a középkorban fontos stratégiai pont volt, és hosszú évszázadokig szolgálta őröző szerepét a királyság határaikon.</p>
-            <br>
-            <p>A város különleges hangulata a szűk, kőzetes utcáiból, a középkori épületekből és a borkultúrájából fakad. Veszprém nemcsak egy város, hanem egy életérzés: művészet, történelem és természet harmonikus ötvözete.</p>
+    <!-- 3. ÉS 4. PARAGRAFFUS: KULTÚRA ÉS TERMÉSZET -->
+    <section id="kultura" style="background-color: #f8f6f4;">
+        <h2>Kultúra és Természet</h2>
+        <div class="dual-content">
+            <div class="content-block">
+                <h3>Kulturális Kincs</h3>
+                <p>Veszprém nemcsak történelmi, hanem kulturális szempontból is jelentős város. Számos múzeum, színház, koncert és fesztivál színesíti a város életét. 2023-ban Veszprém és a Bakony–Balaton régió viselte az Európa Kulturális Fővárosa címet, amelynek köszönhetően számos új kulturális program és fejlesztés valósult meg.</p>
+            </div>
+            <div class="content-block">
+                <h3>Természeti Szépségek</h3>
+                <p>A város természeti környezete is különleges. A környéken több kirándulóhely, park és túraútvonal található, így a természetkedvelők számára is sok lehetőséget kínál. Veszprém összességében egy olyan város, ahol a történelmi múlt, a kulturális élet és a természeti szépségek jól megférnek egymás mellett.</p>
+            </div>
         </div>
     </section>
 
@@ -332,9 +365,10 @@
             <a href="#">Facebook</a>
             <a href="#">Instagram</a>
             <a href="#">Térkép</a>
+            <a href="#">Turisztikai Információ</a>
         </div>
         <p>&copy; 2026 Veszprém Oldala - Minden jog fenntartva.</p>
-        <p style="font-size: 0.8rem; margin-top: 10px;">Kapcsolat: info@veszprem-oldala.hu | +36 123 456 789</p>
+        <p style="font-size: 0.8rem; margin-top: 15px;">Kapcsolat: info@veszprem-oldala.hu | +36 123 456 789</p>
     </footer>
 
 </body>
