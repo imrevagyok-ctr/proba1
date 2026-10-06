@@ -1,11 +1,10 @@
-# proba1
+# Project 1 - Basic Layout
 
-Lépések
-beállítottam a háttérszínt
-csináltam egy középre illesztett cimsort
-beillesztettem egy lorem ipsum szöveget
+## Development Steps
+- Set the background color.
+- Created a centered header.
+- Added Lorem Ipsum placeholder text.
 
-
-Javítások:
-Háttér, és betüszín változtatása
-Gomb hozzáadása
+## Updates & Fixes
+- Modified background and font colors.
+- Added a button element.
