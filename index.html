@@ -1,26 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Veszprém Weboldal</title>
+    <style>
+        /* Alapos stílusok */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Navigációs sáv stílusa */
+        .navbar {
+            display: flex;
+            justify-content: space-between; /* Elosztja a három részt (bal, közep, jobb) */
+            align-items: center;           /* Középre igazítja függőleg */
+            background-color: #2c3e50;     /* Sötétkék/szürke háttér */
+            padding: 10px 5%;              /* Oldalsó részeknél kis távolság */
+            height: 70px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* A bal és jobb oldali gombok tartóhelye */
+        .nav-group {
+            display: flex;
+            gap: 15px;                     /* Távolság a gombok között */
+            flex: 1;                       /* Ez biztosítja, hogy a bal és jobb rész egyenlő helyet foglaljon */
+        }
+
+        /* A jobb oldali csoportot jobbra igazítjuk */
+        .nav-group.right {
+            justify-content: flex-end;
+        }
+
+        /* A központi felirat stílusa */
+        .nav-center {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ecf0f1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            flex: 2;                       /* Több helyet ad a középre */
+            text-align: center;
+        }
+
+        /* Gombok stílusa */
+        .nav-btn {
+            text-decoration: none;
+            color: white;
+            padding: 8px 16px;
+            border: 1px solid #ecf0f1;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Gombok hover (egérrel rámutatás) hatása */
+        .nav-btn:hover {
+            background-color: white;
+            color: #2c3e50;
+        }
+
+        /* Tartalom csak mutatásra */
+        .content {
+            padding: 50px;
+            text-align: center;
+        }
+    </style>
 </head>
-<body style="background-color: rgb(0, 0, 0); color: rgb(7, 235, 7);"></body>
-    <h1 style="text-align: center;">Esküszöm nem vírus</h1>
+<body>
 
+    <nav class="navbar">
+        <!-- Bal oldali gombok -->
+        <div class="nav-group">
+            <a href="#" class="nav-btn">Hírek</a>
+            <a href="#" class="nav-btn">Galéria</a>
+        </div>
 
+        <!-- Középső felirat -->
+        <div class="nav-center">Veszprém</div>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel viverra purus. Pellentesque vulputate imperdiet turpis ut vulputate. Morbi sed ante non est vestibulum cursus id id lacus. Cras auctor aliquet lorem, sit amet accumsan ipsum eleifend quis. Pellentesque vulputate nulla diam, eu aliquet libero hendrerit ut. Sed vehicula eros enim, ut gravida sapien aliquam a. Nunc cursus nec arcu non ullamcorper. Quisque maximus, odio sed condimentum laoreet, tellus est convallis lacus, at consequat erat eros eu lacus.
+        <!-- Jobb oldali gombok -->
+        <div class="nav-group right">
+            <a href="#" class="nav-btn">Kapcsolat</a>
+            <a href="#" class="nav-btn">Térkép</a>
+        </div>
+    </nav>
 
-Vivamus leo quam, bibendum at tortor nec, euismod hendrerit neque. Cras fringilla mauris ut fringilla volutpat. Nunc id mi at arcu ullamcorper interdum. Suspendisse leo ex, suscipit ac porta nec, facilisis eget neque. Nulla facilisi. Praesent fringilla, purus nec luctus porta, sapien eros suscipit ligula, in vehicula elit nunc vel eros. Integer rhoncus ut orci at maximus. Morbi tincidunt velit non ultricies laoreet. Vivamus cursus justo ut lacus ultricies, id ullamcorper magna blandit.
+    <div class="content">
+        <h1>Üdvözöljük a Veszprém hivatalos oldalán!</h1>
+        <p>Ez egy példa navigációs sávra, ahol a gombok szépen elrendezve vannak.</p>
+    </div>
 
-Etiam pretium eu lorem vel tincidunt. Duis hendrerit, nulla sit amet laoreet consectetur, tellus purus mattis erat, quis ultricies ipsum velit at sapien. Etiam sed turpis felis. Maecenas in nibh id magna sodales cursus lacinia sit amet nisl. Maecenas nulla ipsum, dapibus nec diam vel, laoreet consectetur velit. Sed ipsum mi, consectetur vel massa vel, accumsan lobortis nisl. Vivamus rhoncus eleifend nulla, ac maximus metus commodo a. Nulla facilisi.
-
-Suspendisse lobortis, libero vel semper ultrices, odio libero blandit turpis, tincidunt convallis odio velit ut dolor. Aliquam hendrerit ultricies tortor id rhoncus. Integer cursus quis lacus molestie tincidunt. Praesent lacinia vitae metus tincidunt consectetur. Donec in justo laoreet, pellentesque orci ac, vestibulum neque. Aenean at rutrum justo. Proin in sapien lobortis, suscipit dui a, fringilla magna. Vivamus at sagittis ante. Donec scelerisque vitae ante ut tempus. Curabitur egestas lacus velit, id egestas purus sollicitudin et. Sed vitae vehicula arcu, eu interdum turpis. Nulla facilisi. Nam viverra ex sed ligula dignissim, sit amet pharetra metus interdum.
-
-Curabitur scelerisque dignissim lacus, at porttitor lorem fermentum id. Ut dictum ligula mauris, ut ullamcorper lectus varius vitae. Cras accumsan eu lacus nec finibus. Cras sed mollis lorem. Vivamus vitae iaculis arcu, venenatis ultricies nibh. Donec quis molestie nulla. Morbi eros odio, finibus eget tristique a, consectetur quis arcu. In finibus augue et lacus mollis, in fermentum urna rhoncus. Nunc sed congue libero. Etiam ut velit eros.</p>
-<a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHEmPyebpFjl4riaeFeNnRtlhf9TX7CqiQ1-uU-39VwA&s=10" target="_blank" rel="noopener noreferrer">
-  <button>Nyomj rá</button>
-</a>
 </body>
 </html>
