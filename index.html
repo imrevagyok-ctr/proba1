@@ -12,9 +12,9 @@
         /* --- VARIÁBLÁK ÉS ALAPOS STÍLUSOK --- */
         :root {
             --primary-burgundy: #6b0d1e; /* Mélyvörös (rózsa) */
-            --gold-accent: #c5a059;      /* Matt arany */
+            --gold-accent: #064E3B;      /* Matt arany / zöld tónus */
             --dark-slate: #1a1f24;
-            --soft-white: #fcfaf7;
+            --soft-white: #F8E7C9;
             --text-gray: #3e3e3e;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
@@ -53,7 +53,7 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(26, 31, 36, 0.85);
+            background: rgba(18, 28, 37, 0.85);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 4px 30px rgba(0,0,0,0.1);
@@ -101,11 +101,20 @@
             box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
         }
 
-        /* --- HERO SZEKCIÓ --- */
+        /* --- HERO SLIDER SZEKCIÓ --- */
         .hero {
+            position: relative;
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), 
-                        url('https://veszprembalaton2023.hu/blob/51881248414-a60cc171b9-5k.exact1600w.jpg');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+            overflow: hidden;
+        }
+
+        .hero .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -115,40 +124,95 @@
             text-align: center;
             color: white;
             padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .hero .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Slide elemek animációja */
+        .hero .slide h1,
+        .hero .slide p,
+        .hero .slide .cta-button {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .hero .slide.active h1 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
+        }
+
+        .hero .slide.active p {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .hero .slide.active .cta-button {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
         }
 
         .hero h1 {
             font-size: clamp(3rem, 8vw, 6rem);
             margin-bottom: 20px;
-            color: white;
-            animation: fadeInUp 1.2s ease forwards;
         }
 
         .hero p {
             font-size: 1.2rem;
             max-width: 750px;
             margin-bottom: 35px;
-            opacity: 0;
-            animation: fadeInUp 1.2s ease 0.4s forwards;
         }
 
         .cta-button {
             padding: 18px 45px;
             background: var(--gold-accent);
-            color: white;
+            color: #F8E7C9;
             text-decoration: none;
             font-weight: bold;
             border-radius: 50px;
+            border: 0;
+            display: inline-block;
             transition: var(--transition);
-            opacity: 0;
-            animation: fadeInUp 1.2s ease 0.8s forwards;
         }
 
         .cta-button:hover {
-            background: #b38e4a;
+            background: #a39885;
             transform: scale(1.05);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
+
+        /* Navigációs nyilak a sliderhez */
+        .hero .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            z-index: 10;
+            transition: background 0.3s;
+            border-radius: 5px;
+        }
+
+        .hero .nav-arrow:hover {
+            background: #a39885;
+        }
+
+        .hero .prev { left: 20px; }
+        .hero .next { right: 20px; }
 
         /* --- SZEKCIÓK ÁLLÍTÁSA --- */
         section {
@@ -261,12 +325,6 @@
             color: var(--gold-accent);
         }
 
-        /* --- ANIMÁCIÓK --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         /* RESPONSIVITÁS */
         @media (max-width: 992px) {
             .navbar { padding: 15px 5%; }
@@ -286,22 +344,44 @@
 
     <nav class="navbar">
         <div class="nav-group">
+            <a href="#" class="nav-btn">Galéria</a>
             <a href="#latnivalok" class="nav-btn">Látnivalók</a>
-            <a href="#kultura" class="nav-btn">Kultúra</a>
         </div>
 
         <div class="nav-center">VESZPRÉM</div>
 
         <div class="nav-group right">
-            <a href="#" class="nav-btn">Galéria</a>
+            <a href="#kultura" class="nav-btn">Kultúra</a>
             <a href="#kapcsolat" class="nav-btn">Kapcsolat</a>
         </div>
     </nav>
 
+    <!-- ==================== HERO SLIDER ====================== -->
     <header class="hero">
-        <h1>Veszprém</h1>
-        <p>Fedezd fel a Rózsaváros varázsát, ahol a középkori történet találkozik a természet szépségével.</p>
-        <a href="#latnivalok" class="cta-button">Fedezd fel a várost</a>
+        <!-- 1. slide -->
+        <div class="slide active" style="background-image:url('https://veszprembalaton2023.hu/blob/51881248414-a60cc171b9-5k.exact1600w.jpg');">
+            <h1 style="color: #064E3B; background-color: #F8E7C9; border-radius: 50px; padding: 0 20px;">Veszprém</h1>
+            <p style="color: #064E3B; background-color: #F8E7C9; border-radius: 50px; padding: 10px 20px;">Fedezd fel a Rózsaváros varázsát, ahol a középkori történet találkozik a természet szépségével.</p>
+            <a href="#latnivalok" class="cta-button">Fedezd fel a várost</a>
+        </div>
+
+        <!-- 2. slide -->
+        <div class="slide" style="background-image:url('https://static.regon.hu/ma/2024/02/veszpremivarnegyed_3.jpg');">
+            <h1 style="color: #064E3B; background-color: #F8E7C9; border-radius: 50px; padding: 0 20px;">A Veszprémi Vár</h1>
+            <p style="color: #064E3B; background-color: #F8E7C9; border-radius: 50px; padding: 10px 20px;">Meglátogasd a múzeumokat és élvezd a panorámát.</p>
+            <a href="#latnivalok" class="cta-button">További információk</a>
+        </div>
+
+        <!-- 3. slide -->
+        <div class="slide" style="background-image:url('https://i.szalas.hu/pois/2733/500x500/112879.jpg');">
+            <h1 style="color: #064E3B; background-color: #F8E7C9; border-radius: 50px; padding: 0 20px;">A Tűztorony</h1>
+            <p style="color: #064E3B; background-color: #F8E7C9; border-radius: 50px; padding: 10px 20px;">Veszprém egyik ikonikus jelképe.</p>
+            <a href="#kultura" class="cta-button">Ismerd meg a természeti szépségeket</a>
+        </div>
+
+        <!-- Navigációs nyilak -->
+        <button class="nav-arrow prev">&#10094;</button>
+        <button class="nav-arrow next">&#10095;</button>
     </header>
 
     <!-- 1. PARAGRAFFUS: BEVEZETÉS -->
@@ -323,7 +403,7 @@
                 <img src="https://static.regon.hu/ma/2024/02/veszpremivarnegyed_3.jpg" alt="Veszprémi Vár">
                 <div class="card-content">
                     <h3>A Veszprémi Vár</h3>
-                    <p>A város szívében fekvő vársziget egy középkori kastélykomplexst őriz meg. Meglátogasd a múzeumokat és élvezd a panorámát.</p>
+                    <p>A város szívében fekvő vársziget egy középkori kastélykomplexust őriz meg. Meglátogasd a múzeumokat és élvezd a panorámát.</p>
                 </div>
             </div>
 
@@ -366,11 +446,44 @@
             <a href="https://www.instagram.com" target="_blank">Instagram</a>
             <a href="https://www.google.com/maps" target="_blank">Térkép</a>
             <a href="#latnivalok">Turisztikai Információ</a>
-
         </div>
         <p>&copy; 2026 Veszprém Oldala - Minden jog fenntartva.</p>
         <p style="font-size: 0.8rem; margin-top: 15px;">Kapcsolat: info@veszprem-oldala.hu | +36 123 456 789</p>
     </footer>
 
+    <!-- ==================== HERO SLIDER SCRIPT ====================== -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelectorAll('.hero .slide');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function showSlide(idx){
+            slides.forEach((s, i) => { 
+                s.classList.toggle('active', i === idx); 
+            });
+            currentIndex = idx;
+        }
+
+        // Automatikus pörgetés 15 másodpercenként
+        let slideInterval = setInterval(() => {
+            let nextIdx = (currentIndex + 1) % totalSlides;
+            showSlide(nextIdx);
+        }, 15000);
+
+        prevBtn.addEventListener('click', () => {
+            let prevIdx = (currentIndex - 1 + totalSlides) % totalSlides;
+            showSlide(prevIdx);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            let nextIdx = (currentIndex + 1) % totalSlides;
+            showSlide(nextIdx);
+        });
+    });
+    </script>
 </body>
 </html>

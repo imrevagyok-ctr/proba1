@@ -1,15 +1,30 @@
-# Project 1 - Basic Layout
+# Projekt neve
+    Veszprém környezete
 
-## Development Steps
-- Set the background color.
-- Created a centered header.
-- Added Lorem Ipsum placeholder text.
+## Cél és résztvevők
+- Az oldal célja a város megismertetése, és történetének egy részének elmesélése.
+    - Résztvevők:
+        - Stumpf Imre (The Co. Operator)
+        - Mészáros Balázs (The Designer)
+        - Tivolt Iván (The Lexicon)
+## Futtatás
+    Widows kernelben. Szerited miben? Ez egy kicseszett WEBOLDAL!
 
-## Updates & Fixes
-- Modified background and font colors.
-- Added a button element.
+## Elkészült, eredetileg vállalt funkciók
+    Igen elkészült (FINALY DONE🎉✌️). Minden funkcióban mükszik, reszponzív, nincs vagy csak minimális js van benne, rengeteg animációval, jó színkombinációval díszítve.
 
-# Balazs Up to Date the index.html file
-## What i do?
-- Create a <Better!> design, and fix a lot of bug
-- What is the next? My teamate have to see what i push it and accept it, because i don't create again.
+## Kipróbált esetek
+- Vannak.
+- Méghozzá eléggé sok.
+    - Rossz gombok
+    - Nem működő továbbítás
+    - Nincs animáció amikor pedig definiálva vannak
+    - Túl gyors pörgetés
+- Fixálva minden 👍.
+
+## Git-mentés és munkamegosztás
+    Minden a felhőben ☁️.
+
+## Ismert hibák/korlátok
+- Hibák nincsenek.
+- Js kódnyelv tudásának hiánya.
