@@ -1,5 +1,5 @@
 # Projekt neve
-    Veszprém környezete
+1. Veszprém környezete
 
 ## Cél és résztvevők
 - Az oldal célja a város megismertetése, és történetének egy részének elmesélése.
@@ -8,10 +8,10 @@
         - Mészáros Balázs (The Designer)
         - Tivolt Iván (The Lexicon)
 ## Futtatás
-    Widows kernelben. Szerited miben? Ez egy kicseszett WEBOLDAL!
+2. Widows kernelben. Szerited miben? Ez egy kicseszett WEBOLDAL!
 
 ## Elkészült, eredetileg vállalt funkciók
-    Igen elkészült (FINALY DONE🎉✌️). Minden funkcióban mükszik, reszponzív, nincs vagy csak minimális js van benne, rengeteg animációval, jó színkombinációval díszítve.
+3. Igen elkészült (FINALY DONE🎉✌️). Minden funkcióban mükszik, reszponzív, nincs vagy csak minimális js van benne, rengeteg animációval, jó színkombinációval díszítve.
 
 ## Kipróbált esetek
 - Vannak.
@@ -23,7 +23,7 @@
 - Fixálva minden 👍.
 
 ## Git-mentés és munkamegosztás
-    Minden a felhőben ☁️.
+4. Minden a felhőben ☁️.
 
 ## Ismert hibák/korlátok
 - Hibák nincsenek.
